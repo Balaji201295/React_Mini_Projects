@@ -1,16 +1,33 @@
 import React, { useState } from "react";
 import { accordionData } from "../constants";
 import { IoIosArrowDown } from "react-icons/io";
+const MultipleSelectionAccordion = () => {
+  const [selected, setSelected] = useState([]);
+  const [enableMultiple, setEnableMultiple] = useState(false);
 
-const SimpleAccordion = () => {
-  const [selected, setSelected] = useState(null);
+  const toggleSelection = (id) => {
+    setSelected((prevSelected) => {
+      if (enableMultiple) {
+        return prevSelected.includes(id)
+          ? prevSelected.filter((item) => item !== id)
+          : [...prevSelected, id];
+      } else {
+        return prevSelected.includes(id) ? [] : [id];
+      }
+    });
+  };
 
-  const handleSelection = (id) => setSelected(id === selected ? null : id);
-
+  const isItemSelected = (id) => selected.includes(id);
   return (
     <section className="flex flex-col justify-center items-center gap-4">
-      <h1>Accordion</h1>
-
+      <h1>Multiple Selection Accordion</h1>
+      <button
+        type="button"
+        className="text-base font-medium bg-amber-200 py-2 px-4 rounded-sm border border-black"
+        onClick={() => setEnableMultiple((prev) => !prev)}
+      >
+        {enableMultiple ? "Disable Multiple" : "Enable Multiple"}
+      </button>
       <div className="w-full max-w-2xl">
         {accordionData && accordionData.length > 0 ? (
           <div className="flex flex-col gap-2">
@@ -18,20 +35,20 @@ const SimpleAccordion = () => {
               <div key={data.id} className="item">
                 <div
                   className="flex justify-between items-center py-2 px-4 bg-amber-200 rounded-sm cursor-pointer"
-                  onClick={() => handleSelection(data.id)}
+                  onClick={() => toggleSelection(data.id)}
                 >
                   <h3 className="text-base sm:text-lg font-medium">
                     {data.title}
                   </h3>
                   <IoIosArrowDown
                     className={`${
-                      selected === data.id ? "rotate-180" : "rotate-0"
+                      isItemSelected(data.id) ? "rotate-180" : "rotate-0"
                     } transition-transform duration-500 ease-in-out`}
                   />
                 </div>
                 <div
                   className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                    selected === data.id ? "max-h-screen" : "max-h-0"
+                    isItemSelected(data.id) ? "max-h-screen" : "max-h-0"
                   }`}
                 >
                   <p className="text-sm sm:text-base p-2">{data.content}</p>
@@ -46,5 +63,4 @@ const SimpleAccordion = () => {
     </section>
   );
 };
-
-export default SimpleAccordion;
+export default MultipleSelectionAccordion;
