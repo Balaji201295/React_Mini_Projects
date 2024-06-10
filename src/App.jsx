@@ -1,5 +1,7 @@
 import React from "react";
 import {
+  DataWithPagination,
+  ImageSlider,
   MultipleSelectionAccordion,
   RandomColor,
   Rating,
@@ -11,6 +13,8 @@ const App = () => (
     <MultipleSelectionAccordion />
     <RandomColor />
     <Rating noOfStars={10} />
+    <ImageSlider />
+    <DataWithPagination />
   </div>
 );
 export default App;
