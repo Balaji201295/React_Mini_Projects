@@ -21,7 +21,7 @@ const Rating = ({ noOfStars }) => {
   return (
     <section>
       <h1>Rating</h1>
-      <div className="flex justify-center items-center">
+      <div className="flex flex-wrap justify-center items-center">
         {[...Array(noOfStars)].map((_, index) => {
           const starIndex = (index += 1); // 1,2,3,4,5.....
           return (

@@ -20,7 +20,7 @@ const ImageSlider = ({ url, limit = 5, page = 1 }) => {
     };
     if (url) fetchImages(url);
   }, [url, page, limit]);
-  console.log("Images:", images);
+  // console.log("Images:", images);
 
   if (loading) return <div>Loading Data! Please Wait</div>;
 

@@ -1,6 +1,7 @@
 import React from "react";
 import {
   DataWithPagination,
+  FilterCard,
   ImageSlider,
   MultipleSelectionAccordion,
   RandomColor,
@@ -15,6 +16,7 @@ const App = () => (
     <Rating noOfStars={10} />
     <ImageSlider url={"https://picsum.photos/v2/list"} page={1} limit={10} />
     <DataWithPagination />
+    <FilterCard />
   </div>
 );
 export default App;
