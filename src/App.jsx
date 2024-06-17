@@ -3,6 +3,7 @@ import {
   DataWithPagination,
   FilterCard,
   ImageSlider,
+  LoadMoreItems,
   MultipleSelectionAccordion,
   RandomColor,
   Rating,
@@ -17,6 +18,7 @@ const App = () => (
     <ImageSlider url={"https://picsum.photos/v2/list"} page={1} limit={10} />
     <DataWithPagination />
     <FilterCard />
+    <LoadMoreItems />
   </div>
 );
 export default App;
